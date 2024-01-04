@@ -77,7 +77,7 @@ posts.put('/:postId', validationId, authentication, async (req, res) => {
         return;
     }
     try {
-        const data = await functions.updateBodyPost(req.body.body,req.params.postId);
+        const data = await functions.updateBodyPost(req.body.body, req.params.postId);
         if (data) {
             res.json(data);
             return;
@@ -127,7 +127,7 @@ posts.post('/:postId', validationId, async (req, res) => {
     }
     try {
         const data = await funCom.addComment(req.params.postId, req.body.name, req.body.body);
-        res.json(data); 
+        res.json(data);
         return;
     }
     catch (err) {

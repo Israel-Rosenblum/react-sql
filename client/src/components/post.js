@@ -4,12 +4,12 @@ import style from "../style/component.module.css";
 import { useState, useEffect } from "react";
 
 export default function Post(props) {
-
+const [comments, setComments] = useState(false);
   let user = localStorage.getItem("user");
   let userObject = JSON.parse(user);
   const [displayBody, setDisplayBody] = useState(false);
   const [input, setInput] = useState(false);
-  const [text, setText] = useState("");
+  const [text,setText] = useState("");
   return (
     <>
       <div className={style.postContainer}>
@@ -27,19 +27,19 @@ export default function Post(props) {
             setInput(!input)
           }}>
             <input type="text" name="update" className={style.inputBodyPost}
-              onChange={(e) => setText(e.target.value)}
-              style={input ? { display: "block" } : { display: "none" }} />
+             onChange={(e)=>setText(e.target.value)}
+             style={input ? { display: "block" } : { display: "none" }} />
             <button style={input ? { display: "block" } : { display: "none" }}
-              onClick={() => { props.updatePost(text, props.post.id) }}>שלח</button>
+             onClick={() =>{props.updatePost(text ,props.post.id)}}>שלח</button>
           </form>
           <div className={style.buttonContainer} style={props.post.userId == userObject.id ?
             { display: "block" }
             : { display: "none" }
           }>
             <div className={style.btn}>
-              <button onClick={() => { props.deletePost(props.post.id) }} className={style.deletePost}>delete </button>
-              <button className={style.deletePost} onClick={() => setInput(!input)}> updata </button>
-            </div>
+            <button onClick={() => { props.deletePost(props.post.id) }} className={style.deletePost}>delete </button>
+            <button className={style.deletePost} onClick={() => setInput(!input)}> updata </button>
+             </div>
           </div>
         </div>
       </div>
@@ -47,7 +47,13 @@ export default function Post(props) {
         className={style.displayBody}
         style={displayBody ? { display: "block" } : { display: "none" }}
       >
-        {props.post.body}
+        {props.post.body}<div className={style.show} onClick={()=>{setComments(!comments);props.showComments(props.post.id)}}>show comments</div>
+      {comments?<div className={style.comments}>{props.comments.map(comm=>(<div style={{border: "1px solid black"}}>{
+        <>
+        <h3>name: {comm.name}</h3>
+        <p>{comm.body}</p>
+        </>}</div>))}
+        </div>:null}
       </div>
     </>
   );

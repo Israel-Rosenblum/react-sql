@@ -284,7 +284,18 @@ body{
   background-color: rgb(218, 8, 8);
   
 }
-
+.show{
+  background-color: #a37698;
+  width: 100px;
+  height: 30px;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+}
+.comments{
+background-color:white;
+bottom: 1px solid black;
+}
 
 
 
