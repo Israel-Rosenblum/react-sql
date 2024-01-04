@@ -3,26 +3,26 @@ const pool = require('./main');
 async function getComment(id) {
     const SQL = `SELECT *
      FROM comments WHERE id=? `
-    const [data] = await pool.query(SQL, [id])
+    const [[data]] = await pool.query(SQL, [id])
     return data;
 }
 //show comment by post id
 async function getComments(postId) {
     const SQL = `SELECT *
-     FROM comments WHERE postId=? `
-    const [data] = await pool.query(SQL, [postId])
+     FROM comments WHERE postId= ? `
+    const [data] = await pool.query(SQL,[postId])
+    console.log(data);
     return data;
 }
-
 //add comment
-async function addComment(id,postId, name, body) {
+async function addComment(postId, name, body) {
     const SQL = `INSERT INTO comments (postId, name, body)
     VALUES (?,?,?)`;
     const [data] = await pool.query(SQL, [postId, name, body])
-    return getComments(id)
+    return getComment(data.insertId)
 }
 //set comment 
-async function setComment(id, body) {
+async function setComment(body, id) {
     const SQL = ` UPDATE comments  
     SET body =?
     WHERE id =?`;
@@ -31,7 +31,7 @@ async function setComment(id, body) {
 }
 //delete comment Provided he owns the post
 async function deleteComment(id) {
-    const [result] = await getComment(id);
+    const result = await getComment(id);
     const SQL = `DELETE FROM comments WHERE id=?`;
     const [data] = await pool.query(SQL, [id])
     return result;

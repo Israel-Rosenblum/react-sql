@@ -1,0 +1,290 @@
+body{
+  user-select: none;
+}
+
+.App {
+  text-align: center;
+}
+
+.login {
+  width: 600px;
+  height: 500px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  border: 1px solid black;
+  padding-top: 70px;
+  background-color: #344c11;
+}
+
+.home {
+  display: inline-block;
+  margin: 60px;
+  width: 700px;
+  height: 600px;
+  background-color: #778d45;
+  border-radius: 20px;
+}
+.welcome {
+  color: #c3cfb5;
+  font-weight: 400;
+  font-style: italic;
+  padding: 20px;
+  border-bottom: 1px solid;
+}
+.p {
+  padding: 20px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.links {
+  display: inline-block;
+  font-size: 33px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 20px;
+  color: white;
+  background-color: #1a2902;
+  margin: 10px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.submit {
+  width: 50px;
+  height: 22px;
+  border-radius: 4px;
+  background-color: #aec09a;
+  color: white;
+  padding: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.todosContainer {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background-color: #778d454d;
+}
+
+.displeyTodo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  height: 80px;
+  border-radius: 6px;
+  color: white;
+  background-color: #778d45;
+}
+
+.taskNumber {
+  background-color: #8d457577;
+}
+
+.inputName,
+.inputPassword {
+  padding: 20px;
+  width: 200px;
+  height: 15px;
+  border-radius: 6px;
+  background-color: #aec09a;
+}
+
+.checkbox {
+  margin-right: 0;
+}
+
+.buttonsTodo {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  background-color: #778d45;
+  border-radius: 10px;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.todoContainer {
+  align-items: center;
+  display: flex;
+}
+
+.select {
+  display: inline-block;
+  align-items: center;
+  margin: 10px;
+  width: 130px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: #a37698;
+  align-items: center;
+
+  color: white;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.upDate {
+  width: 50px;
+  height: 20px;
+}
+
+.upDateTodo {
+  height: 65px;
+  width: 360px;
+  background-color:white;
+  border-radius: 6px;
+  font-size: 30px;
+  align-items: center;
+}
+
+.select {
+  width: 300px;
+  height: 40px;
+  background-color: #a37698;
+  align-items: center;
+
+  text-align: center;
+}
+
+.selectBy {
+  font-size: 30px;
+}
+
+.formUpdate {
+  display: none;
+}
+
+.addTodoButton {
+  width: 80px;
+  height: 80px;
+  background-color: #a37698;
+  display: inline-block;
+  border-radius: 6px;
+  color: white;
+  font-size: 22px;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+}
+
+.addTodo,
+.search {
+  width: 630px;
+  height: 60px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 6px;
+  font-size: 30px;
+}
+
+.sendNewTodo {
+  width: 60px;
+  height: 60px;
+  background-color: #a37698;
+  text-align: center;
+  margin: 6px;
+  border-radius: 6px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.post,
+.album {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 80px;
+  border-radius: 6px;
+  color: white;
+  background-color: #778d45;
+  cursor: pointer;
+}
+
+.postsContainer,
+.albumContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  background-color: #778d4523;
+  padding: 20px;
+}
+
+.displayBody {
+  border-radius: 3px;
+  background-color: #aec09a;
+  padding: 30px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editPost {
+  width: 70px;
+  height: 30px;
+  background-color: #778d45;
+  padding: 6px;
+}
+.deletePost {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  background-color: #8c8d45;
+  border-radius: 10px;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+}
+/* .buttonContainer{
+  display: flex;
+  gap: 10px;
+} */
+.btn{
+  display: flex;
+}
+.inputBodyPost{
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+}
+
+.Logout{
+  background-color: rgb(218, 8, 8);
+  
+}
+
+
+
+

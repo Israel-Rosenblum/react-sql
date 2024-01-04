@@ -21,6 +21,12 @@ async function login(username, password){
     JOIN passwords ON users.id = passwords.userId
     WHERE users.name = ? AND passwords.password = ?`;
     const [[data]] = await pool.query(SQL, [username,password])
+    // console.log(data);
     return data;
+}
+module.exports ={
+     getUserName,
+     getUserPassword,
+     login,
 }
 

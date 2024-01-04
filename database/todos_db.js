@@ -2,8 +2,8 @@ const pool = require('./main');
 
 //get all todos by user id
 async function getAllTodos(id) {
-    const SQL = `SELECT title
-     FROM todos WHERE userId=? `
+    const SQL = `SELECT *
+     FROM todos WHERE userId= ? `;
     const [data] = await pool.query(SQL, [id])
     return data;
 }
@@ -11,15 +11,22 @@ async function getAllTodos(id) {
 async function getTodo(id) {
     const SQL = `SELECT *
      FROM todos WHERE id=? `
-    const [[data]] = await pool.query(SQL, [id])
+    const [data] = await pool.query(SQL, [id])
     return data;
 }
+//get all todos order by a-z
+async function getalphabetTodos(userId) {
+    const SQL = `SELECT * FROM todos WHERE userId = ? ORDER BY title`;
+    const [data] = await pool.query(SQL, [userId]);
+    return data;
+};
 //create a new todo
 async function createTodo(userId, title, completed) {
-    const SQL = `INSERT INTO user_management.todos (
+    const SQL = `INSERT INTO todos (
     userId, title,completed)
     VALUES (?,?,?)`;
     const [data] = await pool.query(SQL, [userId, title, completed])
+    console.log(data.insertId);
     return getTodo(data.insertId);
 }
 //delete title
@@ -30,7 +37,7 @@ async function deleteTodo(id) {
     return result;
 }
 //set title 
-async function setTitleTodo(title,id) {
+async function setTitleTodo(title, id) {
     const SQL = `UPDATE todos SET title =? WHERE id =?`;
     const [data] = await pool.query(SQL, [title, id])
     return getTodo(id);
@@ -45,15 +52,28 @@ async function setComleetedTodo(id, completed) {
 async function showCompleteDone(id) {
     const SQL = `SELECT *
     FROM todos WHERE completed=1 AND userId=?`
-    const [data] = await pool.query(SQL,[id])
+    const [data] = await pool.query(SQL, [id])
     return data;
 }
 //show completed not done
-async function showCompleteNotDone(id) {
+async function showCompleteNotDone(userId) {
     const SQL = `SELECT * FROM todos
     WHERE completed=0 AND userId=?`
-    const [data] = await pool.query(SQL,[id])
+    const [data] = await pool.query(SQL, [userId])
     return data;
+}
+
+//search
+async function search(userId, char) {
+    try {
+        const SQL = `SELECT * FROM todos
+    WHERE userId = ? AND title LIKE ?`;
+        const [data] = await pool.query(SQL, [userId, char + "%"])
+        return data;
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 module.exports = {
@@ -65,4 +85,6 @@ module.exports = {
     setComleetedTodo,
     showCompleteDone,
     showCompleteNotDone,
+    getalphabetTodos,
+    search
 }

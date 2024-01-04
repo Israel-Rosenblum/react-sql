@@ -2,11 +2,11 @@ const pool = require('./main');
 
 //get all titles of posts
 async function getAllTitlesOfposts() {
-    const SQL = `SELECT title FROM posts`;
+    const SQL = `SELECT * FROM posts`;
     const [data] = await pool.query(SQL);
-    console.log(data);
+    // console.log(data);
     return data;
-};
+}; 
 //get body of post by post id
 async function getBodyOfPost(id) {
     const SQL = `SELECT body FROM posts WHERE id = ?`;
@@ -36,26 +36,20 @@ async function deletePost(id) {
     WHERE id = ?`;
     const result = await getPost(id)
     const [data] = await pool.query(SQL, [id]);
-    console.log(result);
+    // console.log(result);
     return result
 };
 // update body post
-async function updateBodyPost(id, body) {
+async function updateBodyPost(body,id) {
     const SQL = `UPDATE posts
     SET body = ?
     WHERE id = ?`;
     const [data] = await pool.query(SQL, [body, id]);
     return getPost(id);
 };
-//get only five titles of posts
-async function getFIVETitlesOfposts() {
-    const SQL = `SELECT title FROM posts ORDER BY title LIMIT 5`;
-    const [data] = await pool.query(SQL);
-    return data;
-};
+
 module.exports = {
     getAllTitlesOfposts,
-    getFIVETitlesOfposts,
     getBodyOfPost,
     getPost,
     createPost,
